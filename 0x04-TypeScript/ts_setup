@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+npm install --save-dev webpack
+npm install
+# use `npm run start-dev` to load the web page
