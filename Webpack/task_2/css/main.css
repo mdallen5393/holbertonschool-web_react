@@ -6,3 +6,10 @@ p#count {
 button {
   display: inline-block;
 }
+
+#logo {
+    width: 200px;
+    height: 200px;
+    background-image: '../assets/holberton-logo.jpg';
+    background-size: 200px 200px;
+}
