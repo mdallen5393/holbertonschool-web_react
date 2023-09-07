@@ -1,0 +1,8 @@
+p#count {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+button {
+  display: inline-block;
+}
