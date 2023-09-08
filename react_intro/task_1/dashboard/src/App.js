@@ -4,22 +4,22 @@ import { checkIsIndex, getFooterCopy, getFullYear } from './utils';
 
 
 const Header = () => (
-  <header className="App-header">
+  <div className="App-header">
     <img src={logo} className="App-logo" alt="logo" />
     <h1 className="title">School dashboard</h1>
-  </header>
+  </div>
 );
 
 const Body = () => (
-  <body className="App-body">
+  <div className="App-body">
     <p>Login to access the full dashboard</p>
-  </body>
+  </div>
 );
 
 const Footer = () => (
-  <footer className="App-footer">
+  <div className="App-footer">
     <p>Copyright {getFullYear()} - {getFooterCopy(checkIsIndex())}</p>
-  </footer>
+  </div>
 );
 
 function App() {
