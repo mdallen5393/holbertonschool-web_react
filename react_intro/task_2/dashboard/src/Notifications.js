@@ -4,12 +4,16 @@ import closeIcon from './close-icon.png';
 import { getLatestNotification } from './utils';
 
 export default function Notifications() {
+  const handleButtonClick = () => {
+    console.log('Close button has been clicked');
+  }
+
   return <>
     <div className='Notifications'>
       <img src={closeIcon} alt='close icon'
         style={{ height: '15px', position: 'absolute', top: 10, right: 10 }}
         aria-label='Close'
-        onclick='console.log("Close button has been clicked")'
+        onClick={handleButtonClick}
       ></img>
 
       <p>Here is the list of notifications</p>
