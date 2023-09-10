@@ -10,4 +10,7 @@ function checkIsIndex() {
   return isIndex;
 }
 
-export { getFullYear, getFooterCopy, checkIsIndex };
+const getLatestNotification = () =>
+  '<strong>Urgent requirement</strong> - complete by EOD';
+
+export { getFullYear, getFooterCopy, checkIsIndex, getLatestNotification };

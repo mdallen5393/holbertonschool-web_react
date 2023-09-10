@@ -13,10 +13,12 @@ const Header = () => (
 const Body = () => (
   <div className="App-body">
     <p>Login to access the full dashboard</p>
-    <label for='email'>Email</label>
-    <input type='text' id='email'></input>
-    <label for='password'>Password</label>
-    <input type='text' id='password'></input>
+    <form>
+      <label htmlFor='email' >Email</label>
+      <input type='email' name='email' id='email' autoComplete='email'></input>
+      <label htmlFor='password'>Password</label>
+      <input type='email' name='email' id='password' autoComplete='true'></input>
+    </form>
   </div>
 );
 
