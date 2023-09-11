@@ -13,7 +13,8 @@ module.exports = {
     port: 8564,
     static: {
       directory: path.join(__dirname, 'dist'),
-    }
+    },
+    hot: true,
   },
   mode: 'development',
   module: {
