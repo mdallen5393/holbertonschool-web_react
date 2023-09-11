@@ -11,7 +11,7 @@
 // USING ENZYME
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import App from './App';
 
 describe('App Component', () => {
@@ -20,7 +20,7 @@ describe('App Component', () => {
   // Re-creates wrapper before each test to prevent side-effects or
   // interference between tests
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = mount(<App />);
   });
 
   // Test that App renders without crashing

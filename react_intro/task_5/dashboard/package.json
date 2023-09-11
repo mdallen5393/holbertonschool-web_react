@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "start": "webpack-dev-server --open"
+    "test": "jest",
+    "start": "webpack-dev-server --mode development --config config/webpack.config.js"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +20,8 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.3",
     "image-webpack-loader": "^8.1.0",
+    "jsdom": "^22.1.0",
+    "jsdom-global": "^3.0.2",
     "style-loader": "^3.3.3",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",

@@ -4,7 +4,7 @@ import { getFullYear, getFooterCopy, getLatestNotification } from './utils';
 describe('getFullYear', () => {
   it('should return the current year', () => {
     const currentYear = getFullYear();
-    const expectedYear = new Date.getFullYear();
+    const expectedYear = new Date().getFullYear();
 
     expect(currentYear).toBe(expectedYear);
   });

@@ -1,6 +1,7 @@
-import logo from './logo.jpg';
+import logo from '../assets/logo.jpg';
 import './App.css';
-import { checkIsIndex, getFooterCopy, getFullYear } from './utils';
+import { checkIsIndex, getFooterCopy, getFullYear } from '../utils/utils';
+import React from 'react';
 
 
 const Header = () => (
@@ -17,7 +18,7 @@ const Body = () => (
       <label htmlFor='email' >Email</label>
       <input type='email' name='email' id='email' autoComplete='email'></input>
       <label htmlFor='password'>Password</label>
-      <input type='email' name='email' id='password' autoComplete='true'></input>
+      <input type='password' name='password' id='password' autoComplete='true'></input>
     </form>
   </div>
 );
