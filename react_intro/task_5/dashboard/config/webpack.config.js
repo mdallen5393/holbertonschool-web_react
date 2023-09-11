@@ -29,4 +29,13 @@ module.exports = {
     ]
   },
   devtool: 'inline-source-map',
+  rules: [
+    {
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      use: {
+        loader: "babel-loader",
+      },
+    },
+  ],
 };
