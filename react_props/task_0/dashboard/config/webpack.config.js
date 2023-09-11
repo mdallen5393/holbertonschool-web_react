@@ -27,13 +27,19 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
         },
       },
     ]
   },
   devtool: 'inline-source-map',
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };
