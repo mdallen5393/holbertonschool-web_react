@@ -1,17 +1,17 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const dashboardDir = path.resolve(__dirname, '../dashboard');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: path.resolve(dashboardDir, 'src/index.js'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(dashboardDir, 'dist'),
     filename: 'bundle.js',
   },
   devServer: {
     compress: true,
     port: 8564,
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(dashboardDir, 'dist'),
     },
     hot: true,
   },
@@ -28,8 +28,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-  ],
   devtool: 'inline-source-map',
-}
+};
