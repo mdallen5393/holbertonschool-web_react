@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import Notifications from './Notifications';
 
 describe('Notifications Component', () => {
@@ -8,7 +8,7 @@ describe('Notifications Component', () => {
   // Re-creates wrapper before each test to prevent side-effects or
   // interference between tests
   beforeEach(() => {
-    wrapper = shallow(<Notifications />);
+    wrapper = mount(<Notifications />);
   });
 
   // Test that Notifications renders without crashing

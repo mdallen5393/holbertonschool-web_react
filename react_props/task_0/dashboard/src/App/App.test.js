@@ -1,15 +1,3 @@
-// USING REACT TESTING LIBRARY DUE TO ENZYME INCOMPATIBILITY WITH REACT 18
-// import { render, screen } from '@testing-library/react';
-// import App from './App';
-
-// test('App component renders', () => {
-//   render(<App />);
-//   const headerDiv = screen.getByTestId('App-header');
-//   expect(headerDiv).toBeInTheDocument();
-// });
-
-// USING ENZYME
-
 import React from 'react';
 import { mount } from 'enzyme';
 import App from './App';

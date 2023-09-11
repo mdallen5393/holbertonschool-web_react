@@ -1,4 +1,5 @@
 import { getFullYear, getFooterCopy, getLatestNotification } from './utils';
+import React from 'react';
 
 // Test getFullYear function
 describe('getFullYear', () => {
