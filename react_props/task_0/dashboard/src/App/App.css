@@ -6,28 +6,11 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  font-size: calc(10px + 2vmin);
-  display: flex;
-  align-items: center;
-  border-bottom: 1.5px solid rgb(224,53,75);
-  margin-bottom: 5%;
-}
-
 
 .App-link {
   color: #61dafb;
 }
 
-
-h1.title {
-  color: rgb(224,53,75);
-}
 
 .App-footer {
   margin-top: 5%;

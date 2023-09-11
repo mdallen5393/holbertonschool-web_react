@@ -11,6 +11,7 @@ const Header = () => (
   </div>
 );
 
+
 const Body = () => (
   <div className="App-body">
     <p>Login to access the full dashboard</p>
@@ -23,11 +24,13 @@ const Body = () => (
   </div>
 );
 
+
 const Footer = () => (
   <div className="App-footer">
     <p>Copyright {getFullYear()} - {getFooterCopy(checkIsIndex())}</p>
   </div>
 );
+
 
 function App() {
   return (
@@ -38,5 +41,6 @@ function App() {
     </>
   );
 }
+
 
 export default App;
