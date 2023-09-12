@@ -24,8 +24,24 @@ const listCourses = [
 ];
 
 class App extends React.Component {
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyDown);
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  };
+
+  handleKeyDown = (event) => {
+    console.log('A key was pressed', event.key);
+    if (event.ctrlKey && event.key === 'h') {
+      alert('Logging you out');
+      this.props.logOut();
+    }
+  };
+
   render() {
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, logOut } = this.props;
     return (
       <>
         <div className='header'>
@@ -38,15 +54,17 @@ class App extends React.Component {
         <Footer />
       </>
     );
-  }
-}
+  };
+};
 
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
+  logOut: PropTypes.func,
 };
 
 App.defaultProps = {
   isLoggedIn: false,
+  logOut: () => {},
 };
 
 export default App;

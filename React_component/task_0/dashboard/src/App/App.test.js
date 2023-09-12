@@ -47,11 +47,18 @@ describe('App Component before login', () => {
 
 describe('App Component after login', () => {
   let wrapper;
+  const mockLogOut = jest.fn();
+  const mockAlert = jest.fn();
 
   // Re-creates wrapper before each test to prevent side-effects or
   // interference between tests
   beforeEach(() => {
-    wrapper = mount(<App isLoggedIn={true}/>);
+    global.alert = mockAlert;
+    wrapper = mount(<App isLoggedIn={true} logOut={mockLogOut} />);
+  });
+
+  afterEach(() => {
+    global.alert = window.alert;
   });
 
   // Test that Login is not displayed when logged in
@@ -66,5 +73,13 @@ describe('App Component after login', () => {
     wrapper.update();
     const CourseListElement = wrapper.find('table');
     expect(CourseListElement.exists()).toBe(true);
+  });
+
+  // Test that logOut and alert are called when ctrl+h is pressed
+  it('calls logOut and alert when ctrl+h is pressed', () => {
+    const instance = wrapper.instance();
+    instance.handleKeyDown({ key: 'h', ctrlKey: true });
+    expect(mockLogOut).toHaveBeenCalled();
+    expect(mockAlert).toHaveBeenCalledWith('Logging you out');
   });
 });
