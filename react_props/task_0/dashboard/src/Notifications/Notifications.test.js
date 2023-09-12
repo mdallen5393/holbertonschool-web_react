@@ -8,7 +8,7 @@ describe('Notifications Component', () => {
   // Re-creates wrapper before each test to prevent side-effects or
   // interference between tests
   beforeEach(() => {
-    wrapper = mount(<Notifications />);
+    wrapper = mount(<Notifications displayDrawer={true}/>);
   });
 
   // Test that Notifications renders without crashing
@@ -34,5 +34,36 @@ describe('Notifications Component', () => {
   it('renders the first NotificationItem html correctly', () => {
     wrapper.update();
     expect(wrapper.html()).toContain('<div class=\"Notifications\"><img src=\"test-file-stub\" alt=\"close icon\" style=\"height: 15px; position: absolute; top: 10px; right: 10px;\" aria-label=\"Close\"><p>Here is the list of notifications</p><ul><li data-notification-type=\"default\">New course available</li><li data-notification-type=\"urgent\">New resume available</li><li data-notification-type=\"urgent\"><strong>Urgent requirement</strong> - complete by EOD</li></ul></div>');
+  });
+});
+
+describe('Notifications Component displayDrawer', () => {
+
+  // Test that the menu item is being displayed when displayDrawer is false
+  it('displays the menuItem div when displayDrawer is false', () => {
+    const wrapper = mount(<Notifications />);
+    const menuItemElement = wrapper.find('.menuItem');
+    expect(menuItemElement.exists()).toBe(true);
+  });
+
+  // Test that the div.Notifications is not being displayed when displayDrawer is false
+  it('does not display the Notifications div when displayDrawer is false', () => {
+    const wrapper = mount(<Notifications />);
+    const NotificationsComponent = wrapper.find('.Notifications');
+    expect(NotificationsComponent.exists()).toBe(false);
+  });
+
+  // Test that the menu item is being displayed when displayDrawer is true
+  it('displays the menuItem div when displayDrawer is true', () => {
+    const wrapper = mount(<Notifications displayDrawer={true} />);
+    const menuItemElement = wrapper.find('.menuItem');
+    expect(menuItemElement.exists()).toBe(true);
+  });
+
+  // test that the div.Notifications is being displayed when displayDrawer is true
+  it('does not display the Notifications div when displayDrawer is false', () => {
+    const wrapper = mount(<Notifications displayDrawer={true}/>);
+    const NotificationsComponent = wrapper.find('.Notifications');
+    expect(NotificationsComponent.exists()).toBe(true);
   });
 });
