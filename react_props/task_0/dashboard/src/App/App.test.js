@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import App from './App';
 
-describe('App Component', () => {
+describe('App Component before login', () => {
   let wrapper;
 
   // Re-creates wrapper before each test to prevent side-effects or
@@ -35,5 +35,36 @@ describe('App Component', () => {
     wrapper.update();
     const footerDiv = wrapper.find('.App-footer');
     expect(footerDiv.exists()).toBe(true);
+  });
+
+  // Test that CourseList is not displayed when isLoggedIn is false
+  it('does not display CourseList when isLoggedIn is false', () => {
+    wrapper.update();
+    const CourseListElement = wrapper.find('table');
+    expect(CourseListElement.exists()).toBe(false);
+  });
+});
+
+describe('App Component after login', () => {
+  let wrapper;
+
+  // Re-creates wrapper before each test to prevent side-effects or
+  // interference between tests
+  beforeEach(() => {
+    wrapper = mount(<App isLoggedIn={true}/>);
+  });
+
+  // Test that Login is not displayed when logged in
+  it('does not display Login when isLoggedIn is false', () => {
+    wrapper.update();
+    const LoginElement = wrapper.find('form');
+    expect(LoginElement.exists()).toBe(false);
+  });
+
+  // Test that CourseList is shown when logged in
+  it('renders the CourseList component when isLoggedIn is true', () => {
+    wrapper.update();
+    const CourseListElement = wrapper.find('table');
+    expect(CourseListElement.exists()).toBe(true);
   });
 });
