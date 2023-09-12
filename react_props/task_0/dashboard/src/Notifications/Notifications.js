@@ -6,7 +6,7 @@ import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types'
 import NotificationItemShape from './NotificationItemShape';
 
-const Notifications = ({ displayDrawer, listNotifications = [] }) => {
+const Notifications = ({ displayDrawer, listNotifications }) => {
   const handleButtonClick = () => {
     console.log('Close button has been clicked');
   };
