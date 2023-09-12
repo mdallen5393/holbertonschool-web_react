@@ -12,4 +12,10 @@
   color: red;
 }
 
+#container {
+  float: right;
+}
 
+.menuItem {
+    text-align: end;
+}

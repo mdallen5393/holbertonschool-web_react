@@ -11,25 +11,27 @@ const Notifications = ({ displayDrawer }) => {
   }
 
   return <>
-    <div className='menuItem'>
-      Your notifications
-    </div>
-    {displayDrawer && (
-      <div className='Notifications'>
-        <img src={closeIcon} alt='close icon'
-          style={{ height: '15px', position: 'absolute', top: 10, right: 10 }}
-          aria-label='Close'
-          onClick={handleButtonClick}
-        ></img>
-
-        <p>Here is the list of notifications</p>
-        <ul>
-          <NotificationItem type='default' value='New course available' />
-          <NotificationItem type='urgent' value='New resume available' />
-          <NotificationItem type='urgent' html={{ __html: getLatestNotification() }} />
-        </ul>
+    <div id='container'>
+      <div className='menuItem'>
+        Your notifications
       </div>
-    )}
+      {displayDrawer && (
+        <div className='Notifications'>
+          <img src={closeIcon} alt='close icon'
+            style={{ height: '15px', position: 'absolute', top: 10, right: 10 }}
+            aria-label='Close'
+            onClick={handleButtonClick}
+          ></img>
+
+          <p>Here is the list of notifications</p>
+          <ul>
+            <NotificationItem type='default' value='New course available' />
+            <NotificationItem type='urgent' value='New resume available' />
+            <NotificationItem type='urgent' html={{ __html: getLatestNotification() }} />
+          </ul>
+        </div>
+      )}
+    </div>
   </>
 };
 

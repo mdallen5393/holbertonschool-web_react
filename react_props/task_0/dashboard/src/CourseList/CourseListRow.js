@@ -11,7 +11,7 @@ const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
       );
     }
     return (
-      <tr>
+      <tr className='column-headers'>
         <th>{textFirstCell}</th>
         <th>{textSecondCell}</th>
       </tr>

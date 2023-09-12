@@ -14,9 +14,13 @@ import CourseList from '../CourseList/CourseList';
 const App = ({ isLoggedIn }) => {
   return (
     <>
-      <Notifications />
-      <Header />
-      {isLoggedIn ? <CourseList /> : <Login />}
+      <div className='header'>
+        <Notifications />
+        <Header />
+      </div>
+      <div className='App-body'>
+        {isLoggedIn ? <CourseList /> : <Login />}
+      </div>
       <Footer />
     </>
   );
