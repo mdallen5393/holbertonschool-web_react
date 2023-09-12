@@ -19,10 +19,4 @@ NotificationItem.propTypes = {
   value: PropTypes.string,
 }
 
-// NotificationItem.defaultProps = {
-//   type: 'default',
-//   // html: { __html: '' },
-//   value: '',
-// }
-
 export default NotificationItem;

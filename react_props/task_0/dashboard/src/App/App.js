@@ -11,7 +11,7 @@ import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
 
 
-function App({ isLoggedIn=false }) {
+const App = ({ isLoggedIn }) => {
   return (
     <>
       <Notifications />
@@ -22,5 +22,12 @@ function App({ isLoggedIn=false }) {
   );
 }
 
+App.PropTypes = {
+  isLoggedIn: PropTypes.bool,
+};
+
+App.defaultProps = {
+  isLoggedIn: false,
+};
 
 export default App;
