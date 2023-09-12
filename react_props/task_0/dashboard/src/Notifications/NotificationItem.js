@@ -1,6 +1,7 @@
 import React from 'react';
 import './Notifications.css';
 import PropTypes from 'prop-types'
+import NotificationItemShape from './NotificationItemShape';
 
 const NotificationItem = ({ type, html, value }) => {
   if (html) {
@@ -14,9 +15,7 @@ const NotificationItem = ({ type, html, value }) => {
 };
 
 NotificationItem.propTypes = {
-  type: PropTypes.string,
-  html: PropTypes.shape({ __html: PropTypes.string }),
-  value: PropTypes.string,
-}
+  listCourses: PropTypes.arrayOf(NotificationItemShape),
+};
 
 export default NotificationItem;
