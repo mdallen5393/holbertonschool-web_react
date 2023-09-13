@@ -3,7 +3,9 @@ import './Notifications.css';
 import PropTypes from 'prop-types'
 import NotificationItemShape from './NotificationItemShape';
 
-const NotificationItem = ({ type, html, value, markAsRead, id }) => {
+// Used React.memo instead of PureComponent since NotificationItem is a
+// functional component.
+const NotificationItem = React.memo(({ type, html, value, markAsRead, id }) => {
   if (html) {
     return (
       <li data-notification-type={type} dangerouslySetInnerHTML={html} onClick={() => markAsRead(id)}/>
@@ -12,7 +14,7 @@ const NotificationItem = ({ type, html, value, markAsRead, id }) => {
   return (
     <li data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>
   );
-};
+});
 
 NotificationItem.propTypes = {
   ...NotificationItemShape.propTypes,
