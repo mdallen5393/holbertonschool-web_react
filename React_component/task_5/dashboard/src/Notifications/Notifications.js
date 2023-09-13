@@ -9,15 +9,19 @@ class Notifications extends Component {
   constructor(props) {
     super(props);
     this.markAsRead = this.markAsRead.bind(this);
-  }
+  };
 
   shouldComponentUpdate(nextProps) {
     return nextProps.listNotifications.length > this.props.listNotifications.length;
-  }
+  };
+
+  componentDidUpdate() {
+    console.log('Component has updated');
+  };
 
   markAsRead(id) {
     console.log(`Notification ${id} has been marked as read`);
-  }
+  };
 
   render() {
     const { displayDrawer, listNotifications } = this.props;
@@ -49,7 +53,7 @@ class Notifications extends Component {
         )}
       </div>
     );
-  }
+  };
 };
 
 Notifications.propTypes = {

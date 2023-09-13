@@ -8,13 +8,14 @@ import NotificationItemShape from './NotificationItemShape';
 const NotificationItem = React.memo(({ type, html, value, markAsRead, id }) => {
   if (html) {
     return (
-      <li data-notification-type={type} dangerouslySetInnerHTML={html} onClick={() => markAsRead(id)}/>
+      <li className="notification-item" data-notification-type={type} dangerouslySetInnerHTML={html} onClick={() => markAsRead(id)}/>
     );
   }
   return (
-    <li data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>
+    <li className="notification-item" data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>
   );
 });
+
 
 NotificationItem.propTypes = {
   ...NotificationItemShape.propTypes,

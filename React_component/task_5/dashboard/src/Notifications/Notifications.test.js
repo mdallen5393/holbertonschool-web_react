@@ -26,7 +26,7 @@ describe('Notifications Component', () => {
   // Test that Notifications renders three list items
   it('renders three list items', () => {
     wrapper.update();
-    const listItems = wrapper.find('NotificationItem');
+    const listItems = wrapper.find('.notification-item');
     expect(listItems.length).toBe(3);
   });
 
@@ -40,7 +40,7 @@ describe('Notifications Component', () => {
   // Test that Notifications renders the correct NotificationItem
   it('renders the first NotificationItem html correctly', () => {
     wrapper.update();
-    expect(wrapper.html()).toContain('<div class=\"Notifications\"><img src=\"test-file-stub\" alt=\"close icon\" style=\"height: 15px; position: absolute; top: 10px; right: 10px;\" aria-label=\"Close\"><p>Here is the list of notifications</p><ul><li data-notification-type=\"default\">New course available</li><li data-notification-type=\"urgent\">New resume available</li><li data-notification-type=\"urgent\"><strong>Urgent requirement</strong> - complete by EOD</li></ul></div>');
+    expect(wrapper.html()).toContain("<div id=\"container\"><div class=\"menuItem\">Your notifications</div><div class=\"Notifications\"><img src=\"test-file-stub\" alt=\"close icon\" style=\"height: 15px; position: absolute; top: 10px; right: 10px;\" aria-label=\"Close\"><p>Here is the list of notifications</p><ul><li class=\"notification-item\" data-notification-type=\"default\">New course available</li><li class=\"notification-item\" data-notification-type=\"urgent\">New resume available</li><li class=\"notification-item\" data-notification-type=\"urgent\"><strong>Urgent requirement</strong> - complete by EOD</li></ul></div></div>");
   });
 });
 
@@ -67,12 +67,13 @@ describe('Notifications Component displayDrawer', () => {
     expect(menuItemElement.exists()).toBe(true);
   });
 
-  // test that the div.Notifications is being displayed when displayDrawer is true
-  it('does not display the Notifications div when displayDrawer is false', () => {
+  // Test that the div.Notifications is being displayed when displayDrawer is true
+  it('displays the Notifications div when displayDrawer is true', () => {
     const wrapper = mount(<Notifications displayDrawer={true}/>);
     const NotificationsComponent = wrapper.find('.Notifications');
     expect(NotificationsComponent.exists()).toBe(true);
   });
+
 });
 
 describe('Notifications Component listNotifications', () => {
@@ -105,7 +106,7 @@ describe('Notifications Component listNotifications', () => {
   it('renders the correct number of NotificationItem components', () => {
     wrapper = mount(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
     expect(wrapper.exists()).toBe(true);
-    const listItems = wrapper.find('NotificationItem');
+    const listItems = wrapper.find('.notification-item');
     expect(listItems.length).toBe(listNotifications.length);
   });
 
@@ -118,5 +119,18 @@ describe('Notifications Component listNotifications', () => {
     // Clean up
     consoleSpy.mockRestore();
   });
-  
+
+  it('does not re-render when updating the props with the same list', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+    wrapper.setProps({ listNotifications: listNotifications });
+    expect(consoleSpy).not.toHaveBeenCalledWith('Component has updated');
+    consoleSpy.mockRestore();
+  });
+
+  it('re-renders when updating the props with a longer list', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+    wrapper.setProps({ listNotifications: [...listNotifications, { id: 4, type: 'default', value: 'Another notification', html: undefined }] });
+    expect(consoleSpy).toHaveBeenCalledWith('Component has updated');
+    consoleSpy.mockRestore();
+  });
 });
