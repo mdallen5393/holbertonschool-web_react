@@ -8,6 +8,8 @@ import Login from '../Login/Login';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
+import BodySection from '../BodySection/BodySection';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 
 // create listNotifications array
 const listNotifications = [
@@ -50,6 +52,9 @@ class App extends React.Component {
         </div>
         <div className='App-body'>
           {isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
+          <BodySection title='News from the School'>
+            <p>Today, we mourn the loss of a C22 student who dared make a function with 41 lines. The ghost of Betty Holberton has now claimed the lives of 69 students in the last...</p>
+          </BodySection>
         </div>
         <Footer />
       </>
