@@ -1,7 +1,7 @@
 import React from 'react';
 
 function withLogging(WrappedComponent) {
-  class WithLogging extends Component {
+  class WithLogging extends React.Component {
     componentDidMount() {
       console.log(`Component ${getDisplayName(WrappedComponent)} is mounted`);
     };
