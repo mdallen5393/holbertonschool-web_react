@@ -1,4 +1,3 @@
-import './App.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -9,7 +8,6 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
 import BodySection from '../BodySection/BodySection';
-import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 
 // create listNotifications array
 const listNotifications = [
