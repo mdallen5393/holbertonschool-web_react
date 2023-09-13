@@ -30,11 +30,8 @@ describe('NotificationItem Component', () => {
   // Test that when simulating a click on the component, the spy is called with the right ID argument
   it('checks that when simulating a click on the component, the spy is called with the right ID argument', () => {
     const markAsReadSpy = jest.fn();
-    
     const wrapper = mount(<NotificationItem type="default" value="test" markAsRead={markAsReadSpy} id={1}/>);
-    
     wrapper.simulate('click');
-    
     expect(markAsReadSpy).toHaveBeenCalledWith(1);
   });
 });
