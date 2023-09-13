@@ -44,10 +44,13 @@ class App extends React.Component {
 
   render() {
     const { isLoggedIn, logOut } = this.props;
+    // Added key={this.props.isLoggedIn} to force re-render of Notifications component
+    //  This is only necessary because we have the shouldComponentUpdate method in notifications for a different task
+    // Also added displayDrawer={isLoggedIn} to tie notifications to isLoggedIn
     return (
       <>
         <div className='header'>
-          <Notifications listNotifications={listNotifications} />
+          <Notifications key={this.props.isLoggedIn} listNotifications={listNotifications} displayDrawer={isLoggedIn} />
           <Header />
         </div>
         <div className='App-body'>
