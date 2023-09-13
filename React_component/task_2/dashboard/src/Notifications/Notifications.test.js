@@ -108,4 +108,19 @@ describe('Notifications Component listNotifications', () => {
     const listItems = wrapper.find('NotificationItem');
     expect(listItems.length).toBe(listNotifications.length);
   });
+
+  it('checks that markAsRead console logs correctly', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+    const wrapper = mount(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
+    
+    const instance = wrapper.instance();
+    
+    instance.markAsRead(1);
+    
+    expect(consoleSpy).toHaveBeenCalledWith('Notification 1 has been marked as read');
+    
+    // Clean up
+    consoleSpy.mockRestore();
+  });
+  
 });
