@@ -1,4 +1,3 @@
-import './Footer.css';
 import { checkIsIndex, getFooterCopy, getFullYear } from '../utils/utils';
 import React from 'react';
 

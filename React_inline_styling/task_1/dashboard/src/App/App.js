@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StyleSheet, css } from 'aphrodite';
 
 // import components
 import Notifications from '../Notifications/Notifications';
@@ -47,17 +48,17 @@ class App extends React.Component {
     // Also added displayDrawer={isLoggedIn} to tie notifications to isLoggedIn
     return (
       <>
-        <div className='header'>
+        <div className={`App-header ${css(styles.AppHeader)}`}>
           <Notifications key={this.props.isLoggedIn} listNotifications={listNotifications} displayDrawer={isLoggedIn} />
           <Header />
         </div>
-        <div className='App-body'>
+        <div className={`App-body ${css(styles.AppBody)}`}>
           {isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
           <BodySection title='News from the School'>
             <p>Today, we mourn the loss of a C22 student who dared make a function with 41 lines. The ghost of Betty Holberton has now claimed the lives of 69 students in the last...</p>
           </BodySection>
         </div>
-        <Footer />
+        <Footer className={`App-footer ${css(styles.AppFooter)}`} />
       </>
     );
   };
@@ -72,5 +73,19 @@ App.defaultProps = {
   isLoggedIn: false,
   logOut: () => {},
 };
+
+const styles = StyleSheet.create({
+  AppFooter: {
+    borderTop: '1.5px solid rgb(224,53,75)',
+    fontStyle: 'italic',
+    textAlign: 'center',
+  },
+  AppBody: {
+    minHeight: '30vw',
+  },
+  AppHeader: {
+    borderBottom: '1.5px solid rgb(225, 53, 75)',
+  },
+})
 
 export default App;
