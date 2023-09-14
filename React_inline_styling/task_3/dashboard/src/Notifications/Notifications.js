@@ -40,7 +40,7 @@ class Notifications extends Component {
             ></img>
 
             {listNotifications.length > 0 && <p>Here is the list of notifications</p>}
-            <ul>
+            <ul className={css(styles.list)}>
               {listNotifications.length === 0 ? (
                 <p>No new notification for now</p>
               ) : (
@@ -72,24 +72,39 @@ const styles = StyleSheet.create({
     border: '1px dashed rgb(224,53,75)',
     padding: '1%',
     position: 'relative',
+    '@media screen and (max-width: 900px)': {
+      fontSize: 20,
+      padding: 0,
+      border: 'none',
+    },
   },
-  
+
   defaultNotification: {
     color: 'blue',
   },
-  
+
   urgentNotification: {
     color: 'red',
   },
-  
+
   container: {
     float: 'right',
+    '@media screen and (max-width: 900px)': {
+      float: 'unset'
+    }
   },
-  
+
   menuItem: {
       textAlign: 'end',
+      '@media screen and (max-width: 900px)': {
+        display: 'none',
+      }
   },
-  
-})
+  list: {
+    listStyleType: 'none',
+    margin: 0,
+    padding: 0,
+  }
+});
 
 export default Notifications;

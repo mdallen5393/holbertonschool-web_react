@@ -10,6 +10,13 @@ const styles = StyleSheet.create({
   urgent: {
     color: 'red',
   },
+  listItem: {
+    '@media screen and (max-width: 900px)': {
+      borderBottom: '1px solid black',
+      padding: '10px 8px',
+      listStyleType: 'none',
+    },
+  },
 });
 
 const NotificationItem = React.memo(({ type, html, value, markAsRead, id }) => {
@@ -17,11 +24,11 @@ const NotificationItem = React.memo(({ type, html, value, markAsRead, id }) => {
 
   if (html) {
     return (
-      <li className={css(className)} data-notification-type={type} dangerouslySetInnerHTML={html} onClick={() => markAsRead(id)}/>
+      <li className={`${css(styles.listItem)} ${css(className)}`} data-notification-type={type} dangerouslySetInnerHTML={html} onClick={() => markAsRead(id)}/>
     );
   }
   return (
-    <li className={css(className)} data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>
+    <li className={`${css(styles.listItem)} ${css(className)}`} data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>
   );
 });
 
