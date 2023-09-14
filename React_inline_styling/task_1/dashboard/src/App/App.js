@@ -48,17 +48,17 @@ class App extends React.Component {
     // Also added displayDrawer={isLoggedIn} to tie notifications to isLoggedIn
     return (
       <>
-        <div className={`App-header ${css(styles.appHeader)}`}>
+        <div className={`App-header ${css(styles.header)}`}>
           <Notifications key={this.props.isLoggedIn} listNotifications={listNotifications} displayDrawer={isLoggedIn} />
           <Header />
         </div>
-        <div className={`App-body ${css(styles.appBody)}`}>
+        <div className={`App-body ${css(styles.body)}`}>
           {isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
           <BodySection title='News from the School'>
             <p>Today, we mourn the loss of a C22 student who dared make a function with 41 lines. The ghost of Betty Holberton has now claimed the lives of 69 students in the last...</p>
           </BodySection>
         </div>
-        <Footer className={`App-footer ${css(styles.appFooter)}`} />
+        <Footer className={`App-footer ${css(styles.footer)}`} />
       </>
     );
   };
@@ -75,15 +75,15 @@ App.defaultProps = {
 };
 
 const styles = StyleSheet.create({
-  appFooter: {
+  footer: {
     borderTop: '1.5px solid rgb(224,53,75)',
     fontStyle: 'italic',
     textAlign: 'center',
   },
-  appBody: {
+  body: {
     minHeight: '30vw',
   },
-  appHeader: {
+  header: {
     borderBottom: '1.5px solid rgb(225, 53, 75)',
   },
 })
