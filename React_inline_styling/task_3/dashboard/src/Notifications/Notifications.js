@@ -28,11 +28,11 @@ class Notifications extends Component {
 
     return (
       <div id='container' className={css(styles.container)}>
-        <div className={`menuItem ${css(styles.menuItem)}`}>
+        <div className={`menuItem ${css(styles.menuItem)} ${css(styles.fadeBounce)}`}>
           Your notifications
         </div>
         {displayDrawer && (
-          <div className={`Notifications ${css(styles.notifications)}`}>
+          <div className={`Notifications ${css(styles.notifications)}}`}>
             <img src={closeIcon} alt='close icon'
               style={{ height: '15px', position: 'absolute', top: 10, right: 10 }}
               aria-label='Close'
@@ -95,16 +95,37 @@ const styles = StyleSheet.create({
   },
 
   menuItem: {
-      textAlign: 'end',
-      '@media screen and (max-width: 900px)': {
-        display: 'none',
-      }
+    textAlign: 'end',
+    '@media screen and (max-width: 900px)': {
+      display: 'none',
+    },
   },
+
   list: {
     listStyleType: 'none',
     margin: 0,
     padding: 0,
-  }
+  },
+
+  fadeBounce: {
+    ':hover': {
+      animationName: [
+        {
+          '0%': { opacity: 0.5 },
+          '100%': { opacity: 1 },
+        },
+        {
+          '0%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-5px)' },
+          '100%': { transform: 'translateY(5px)' },
+        }
+      ],
+      animationDuration: ['1s', '0.5s'],
+      animationIterationCount: ['infinite', '3'],
+    }
+  },
+
 });
+
 
 export default Notifications;
