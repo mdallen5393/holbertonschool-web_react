@@ -1,4 +1,3 @@
-// import './Header.css';
 import logo from '../assets/logo.jpg';
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
