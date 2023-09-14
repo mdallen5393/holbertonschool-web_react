@@ -1,6 +1,9 @@
 import React from 'react';
 import { render } from 'enzyme';
 import CourseListRow from './CourseListRow';
+import { StyleSheetTestUtils } from 'aphrodite';
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe('CourseListRow Component with prop isHeader=true', () => {
 

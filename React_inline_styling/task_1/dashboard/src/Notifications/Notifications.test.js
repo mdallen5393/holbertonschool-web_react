@@ -1,6 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Notifications from './Notifications';
+import { StyleSheetTestUtils } from 'aphrodite';
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe('Notifications Component', () => {
   let wrapper;

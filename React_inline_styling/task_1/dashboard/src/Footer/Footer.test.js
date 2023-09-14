@@ -1,6 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Footer from './Footer';
+import { StyleSheetTestUtils } from 'aphrodite';
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe('Footer Component', () => {
   let wrapper;

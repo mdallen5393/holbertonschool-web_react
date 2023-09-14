@@ -1,6 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import NotificationItem from './NotificationItem';
+import { StyleSheetTestUtils } from 'aphrodite';
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe('NotificationItem Component', () => {
 

@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import BodySection from './BodySection';
+import { StyleSheetTestUtils } from 'aphrodite';
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe('BodySection Component', () => {
   it('renders correctly with children and an h2', () => {
