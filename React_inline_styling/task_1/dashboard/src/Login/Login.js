@@ -1,11 +1,12 @@
-import './Login.css';
+// import './Login.css';
 import React from 'react';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
+import { StyleSheet, css } from 'aphrodite';
 
 const Login = () => (
   <>
     <BodySectionWithMarginBottom title='Log in to continue'>
-      <div className="Login">
+      <div className={`Login ${css(styles.login)}`}>
         <p>Login to access the full dashboard</p>
         <form>
           <label htmlFor='email' >Email</label>
@@ -18,5 +19,11 @@ const Login = () => (
     </BodySectionWithMarginBottom>
   </>
 );
+
+const styles = StyleSheet.create({
+  login: {
+    margin: '30px 30px auto',
+  },
+});
 
 export default Login;

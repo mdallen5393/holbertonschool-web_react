@@ -40,7 +40,7 @@ describe('Notifications Component', () => {
   // Test that Notifications renders the correct NotificationItem
   it('renders the first NotificationItem html correctly', () => {
     wrapper.update();
-    expect(wrapper.html()).toContain("<div id=\"container\"><div class=\"menuItem\">Your notifications</div><div class=\"Notifications\"><img src=\"test-file-stub\" alt=\"close icon\" style=\"height: 15px; position: absolute; top: 10px; right: 10px;\" aria-label=\"Close\"><p>Here is the list of notifications</p><ul><li class=\"notification-item\" data-notification-type=\"default\">New course available</li><li class=\"notification-item\" data-notification-type=\"urgent\">New resume available</li><li class=\"notification-item\" data-notification-type=\"urgent\"><strong>Urgent requirement</strong> - complete by EOD</li></ul></div></div>");
+    expect(wrapper.html()).toContain("<div id=\"container\" class=\"container_107ja4p\"><div class=\"menuItem menuItem_dacsx2\">Your notifications</div><div class=\"Notifications notifications_1noolwd\"><img src=\"test-file-stub\" alt=\"close icon\" style=\"height: 15px; position: absolute; top: 10px; right: 10px;\" aria-label=\"Close\"><p>Here is the list of notifications</p><ul><li class=\"notification-item\" data-notification-type=\"default\">New course available</li><li class=\"notification-item\" data-notification-type=\"urgent\">New resume available</li><li class=\"notification-item\" data-notification-type=\"urgent\"><strong>Urgent requirement</strong> - complete by EOD</li></ul></div></div>");
   });
 });
 

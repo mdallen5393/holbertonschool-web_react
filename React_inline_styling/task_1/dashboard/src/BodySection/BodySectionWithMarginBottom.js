@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import './BodySectionWithMarginBottom.css';
 import BodySection from './BodySection';
+import { StyleSheet, css } from 'aphrodite';
 
 const BodySectionWithMarginBottom = ({ title, children }) => {
   return (
-    <div className="bodySectionWithMargin">
+    <div className={css(styles.bodySectionWithMargin)}>
       <BodySection title={title} children={children}/>
     </div>
   );
@@ -14,5 +13,11 @@ const BodySectionWithMarginBottom = ({ title, children }) => {
 BodySectionWithMarginBottom.propTypes = {
   ...BodySection.propTypes,
 };
+
+const styles = StyleSheet.create({
+  bodySectionWithMargin: {
+    marginBottom: 40,
+  },
+})
 
 export default BodySectionWithMarginBottom;

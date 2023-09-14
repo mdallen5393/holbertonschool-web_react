@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './Notifications.css';
+// import './Notifications.css';
 import closeIcon from '../assets/close-icon.png';
 import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types'
 import NotificationItemShape from './NotificationItemShape';
+import { StyleSheet, css } from 'aphrodite';
 
 class Notifications extends Component {
   constructor(props) {
@@ -27,12 +28,12 @@ class Notifications extends Component {
     const { displayDrawer, listNotifications } = this.props;
 
     return (
-      <div id='container'>
-        <div className='menuItem'>
+      <div id='container' className={css(styles.container)}>
+        <div className={`menuItem ${css(styles.menuItem)}`}>
           Your notifications
         </div>
         {displayDrawer && (
-          <div className='Notifications'>
+          <div className={`Notifications ${css(styles.notifications)}`}>
             <img src={closeIcon} alt='close icon'
               style={{ height: '15px', position: 'absolute', top: 10, right: 10 }}
               aria-label='Close'
@@ -45,7 +46,8 @@ class Notifications extends Component {
                 <p>No new notification for now</p>
               ) : (
                 listNotifications.map(({ type, html, value, id }) => (
-                  <NotificationItem key={id} type={type} html={html} value={value} markAsRead={this.markAsRead} />
+                  <NotificationItem key={id} type={type} html={html} value={value} markAsRead={this.markAsRead}
+                    className={css(type === 'default' ? styles.defaultNotification : styles.urgentNotification)} />
                 ))
               )}
             </ul>
@@ -65,5 +67,30 @@ Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
 };
+
+const styles = StyleSheet.create({
+  notifications: {
+    border: '1px dashed rgb(224,53,75)',
+    padding: '1%',
+    position: 'relative',
+  },
+  
+  defaultNotification: {
+    color: 'blue',
+  },
+  
+  urgentNotification: {
+    color: 'red',
+  },
+  
+  container: {
+    float: 'right',
+  },
+  
+  menuItem: {
+      textAlign: 'end',
+  },
+  
+})
 
 export default Notifications;

@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CourseListRow from './CourseListRow';
-import './CourseList.css';
+// import './CourseList.css';
 import CourseShape from './CourseShape';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
+import { StyleSheet, css } from 'aphrodite';
 
 const CourseList = ({ listCourses = [] }) => {
   return (
     <BodySectionWithMarginBottom title='Course list'>
-      <table id="CourseList">
+      <table id="CourseList" className={css(styles.table)}>
         <thead>
           <CourseListRow textFirstCell="Available courses" isHeader={true} />
           <CourseListRow textFirstCell="Course name" textSecondCell="Credit" isHeader={true} />
@@ -30,5 +31,24 @@ const CourseList = ({ listCourses = [] }) => {
 CourseList.propTypes = {
   listCourses: PropTypes.arrayOf(CourseShape),
 }
+
+const styles = StyleSheet.create({
+  table: {
+    borderBottom: '2px solid',
+    borderCollapse: 'collapse',
+    borderColor: 'lightgray',
+    width: '90%',
+    border: '1px solid',
+    margin: '30px auto',
+  },
+  th: {
+    borderBottom: '2px solid',
+    borderCollapse: 'collapse',
+    borderColor: 'lightgray',
+  },
+  columnHeaders: {
+    textAlign: 'left',
+  },
+});
 
 export default CourseList;
