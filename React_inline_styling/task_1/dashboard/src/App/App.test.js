@@ -1,6 +1,9 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import App from './App';
+import { StyleSheetTestUtils } from 'aphrodite';
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe('App Component before login', () => {
   let wrapper;

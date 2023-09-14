@@ -2,6 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import BodySectionWithMarginBottom from './BodySectionWithMarginBottom';
 import BodySection from './BodySection';
+import { StyleSheetTestUtils } from 'aphrodite';
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe('BodySectionWithMarginBottom Component', () => {
   it('renders a BodySection component and that the props are passed correctly to the child component', () => {
