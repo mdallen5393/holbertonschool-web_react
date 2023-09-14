@@ -1,5 +1,4 @@
 import React from 'react';
-import './Notifications.css';
 import PropTypes from 'prop-types'
 import NotificationItemShape from './NotificationItemShape';
 
