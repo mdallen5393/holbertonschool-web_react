@@ -46,7 +46,7 @@ class Notifications extends Component {
               ) : (
                 listNotifications.map(({ type, html, value, id }) => (
                   <NotificationItem key={id} type={type} html={html} value={value} markAsRead={this.markAsRead}
-                    className={css(type === 'default' ? styles.defaultNotification : styles.urgentNotification)} />
+                    className={`notification-item ${css(type === 'default' ? styles.defaultNotification : styles.urgentNotification)}`} />
                 ))
               )}
             </ul>

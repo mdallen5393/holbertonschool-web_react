@@ -1,20 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import NotificationItemShape from './NotificationItemShape';
+import { StyleSheet, css } from 'aphrodite';
 
-// Used React.memo instead of PureComponent since NotificationItem is a
-// functional component.
+const styles = StyleSheet.create({
+  default: {
+    color: 'blue',
+  },
+  urgent: {
+    color: 'red',
+  },
+});
+
 const NotificationItem = React.memo(({ type, html, value, markAsRead, id }) => {
+  const className = type === 'default' ? styles.default : styles.urgent;
+
   if (html) {
     return (
-      <li className="notification-item" data-notification-type={type} dangerouslySetInnerHTML={html} onClick={() => markAsRead(id)}/>
+      <li className={css(className)} data-notification-type={type} dangerouslySetInnerHTML={html} onClick={() => markAsRead(id)}/>
     );
   }
   return (
-    <li className="notification-item" data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>
+    <li className={css(className)} data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>
   );
 });
-
 
 NotificationItem.propTypes = {
   ...NotificationItemShape.propTypes,
