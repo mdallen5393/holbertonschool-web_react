@@ -28,7 +28,7 @@ class Notifications extends Component {
 
     return (
       <div id='container' className={css(styles.container)}>
-        <div className={`menuItem ${css(styles.menuItem)} ${css(styles.fadeBounce)}`} onClick={this.props.handleDisplayDrawer}>
+        <div className={`menuItem ${css(styles.menuItem)} ${css(styles.fadeBounce)}`} onClick={handleDisplayDrawer}>
           Your notifications
         </div>
         {displayDrawer && (
@@ -39,7 +39,7 @@ class Notifications extends Component {
               aria-label='Close'
               onClick={() => {
                 console.log('Close button has been clicked');
-                this.props.handleHideDrawer();
+                handleHideDrawer();
               }}
             />
 
