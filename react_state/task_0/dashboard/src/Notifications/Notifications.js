@@ -37,10 +37,7 @@ class Notifications extends Component {
               alt='close icon'
               style={{ height: '15px', position: 'absolute', top: 10, right: 10 }}
               aria-label='Close'
-              onClick={() => {
-                console.log('Close button has been clicked');
-                handleHideDrawer();
-              }}
+              onClick={handleHideDrawer}
             />
 
             {listNotifications.length > 0 && <p>Here is the list of notifications</p>}
