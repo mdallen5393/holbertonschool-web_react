@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 
@@ -25,6 +25,15 @@ const listCourses = [
 ];
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayDrawer: false,
+    };
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
+  };
+
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   };
@@ -41,6 +50,14 @@ class App extends React.Component {
     }
   };
 
+  handleDisplayDrawer = () => {
+    this.setState({ displayDrawer: true });
+  };
+
+  handleHideDrawer = () => {
+    this.setState({ displayDrawer: false });
+  };
+
   render() {
     const { isLoggedIn, logOut } = this.props;
     // Added key={this.props.isLoggedIn} to force re-render of Notifications component
@@ -49,7 +66,13 @@ class App extends React.Component {
     return (
       <>
         <div className={`App-header ${css(styles.header)}`}>
-          <Notifications key={this.props.isLoggedIn} listNotifications={listNotifications} displayDrawer={isLoggedIn} />
+          <Notifications
+            key={this.props.isLoggedIn}
+            listNotifications={listNotifications}
+            displayDrawer={isLoggedIn}
+            handleDisplayDrawer={this.handleDisplayDrawer}
+            handleHideDrawer={this.handleHideDrawer}
+          />
           <Header />
         </div>
         <div className={`App-body ${css(styles.body)}`}>
