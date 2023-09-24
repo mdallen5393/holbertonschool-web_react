@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
 
   menuItem: {
     textAlign: 'end',
+    marginRight: 25,
     '@media screen and (max-width: 900px)': {
       display: 'none',
     },
