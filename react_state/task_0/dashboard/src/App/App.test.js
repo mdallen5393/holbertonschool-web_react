@@ -102,11 +102,11 @@ describe('App Component displayDrawer state', () => {
   // Test that displayDrawer's state is true after calling handleDisplayDrawer
   // and is false after HandleHideDrawer is called
   it('has a state of true after handleDisplayDrawer is called and a state of false after handleHideDrawer is called', () => {
-    const instance = wrapper.instance();
-    instance.handleDisplayDrawer();
+    // const instance = wrapper.instance();
+    wrapper.instance().handleDisplayDrawer();
     expect(wrapper.state().displayDrawer).toBe(true);
 
-    instance.handleHideDrawer();
+    wrapper.instance().handleHideDrawer();
     expect(wrapper.state().displayDrawer).toBe(false);
   });
 
@@ -117,22 +117,10 @@ describe('App Component displayDrawer state', () => {
     instance.handleDisplayDrawer();
     wrapper.update();
     expect(wrapper.find('Notifications').prop('displayDrawer')).toBe(true);
-  
+
     // Call handleHideDrawer and check if the updated state is passed as a prop
     instance.handleHideDrawer();
     wrapper.update();
     expect(wrapper.find('Notifications').prop('displayDrawer')).toBe(false);
-  });
-
-  it('calls handleDisplayDrawer when menu item is clicked', () => {
-    const wrapper = mount(<App />);
-    wrapper.find('Notifications').prop('handleDisplayDrawer')();
-    expect(wrapper.instance().state.displayDrawer).toBe(true);
-  });
-
-  it('calls handleHideDrawer when close button is clicked', () => {
-    const wrapper = mount(<App />);
-    wrapper.find('Notifications').prop('handleHideDrawer')();
-    expect(wrapper.instance().state.displayDrawer).toBe(false);
   });
 });

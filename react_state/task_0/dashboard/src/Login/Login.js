@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import { StyleSheet, css } from 'aphrodite';
 
-const Login = () => (
-  <>
-    <BodySectionWithMarginBottom title='Log in to continue'>
-      <div className={`Login ${css(styles.login)}`}>
-        <p>Login to access the full dashboard</p>
-        <form className={css(styles.form)}>
-          <div className={css(styles.labelInput)}>
-            <label htmlFor='email' >Email</label>
-            <input type='email' name='email' id='email' autoComplete='email'></input>
-          </div>
-          <div className={css(styles.labelInput)}>
-            <label htmlFor='password'>Password</label>
-            <input type='password' name='password' id='password' autoComplete='true'></input>
-          </div>
-          <button className={css(styles.button)}>OK</button>
-        </form>
-      </div>
-    </BodySectionWithMarginBottom>
-  </>
-);
+const Login = () => {
+  const [isLoggedIn] = useState(false);
+  return (
+    <>
+      <BodySectionWithMarginBottom title='Log in to continue'>
+        <div className={`Login ${css(styles.login)}`}>
+          <p>Login to access the full dashboard</p>
+          <form className={css(styles.form)}>
+            <div className={css(styles.labelInput)}>
+              <label htmlFor='email' >Email</label>
+              <input type='email' name='email' id='email' autoComplete='email'></input>
+            </div>
+            <div className={css(styles.labelInput)}>
+              <label htmlFor='password'>Password</label>
+              <input type='password' name='password' id='password' autoComplete='true'></input>
+            </div>
+            <button className={css(styles.button)}>OK</button>
+          </form>
+        </div>
+      </BodySectionWithMarginBottom>
+    </>
+  );
+  };
 
 const styles = StyleSheet.create({
   login: {
