@@ -29,9 +29,18 @@ class App extends React.Component {
     super(props);
     this.state = {
       displayDrawer: false,
+      user: {
+        email: '',
+        password: '',
+        isLoggedIn: false,
+      },
+      logIn: this.logIn,
+      logOut: this.logOut,
     };
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
+    this.logIn = this.logIn.bind(this);
+    this.logOut = this.logOut.bind(this);
   };
 
   componentDidMount() {
@@ -46,7 +55,7 @@ class App extends React.Component {
     console.log('A key was pressed', event.key);
     if (event.ctrlKey && event.key === 'h') {
       alert('Logging you out');
-      this.props.logOut();
+      this.state.logOut();
     }
   };
 
@@ -58,9 +67,28 @@ class App extends React.Component {
     this.setState({ displayDrawer: false });
   };
 
+  logIn = (email, password) => {
+    this.setState({
+      user: {
+        email,
+        password,
+        isLoggedIn: true,
+      },
+    });
+  };
+
+  logOut = () => {
+    this.setState({
+      user: {
+        email: '',
+        password: '',
+        isLoggedIn: false,
+      },
+    });
+  };
+
   render() {
-    const { isLoggedIn, logOut } = this.props;
-    const { displayDrawer } = this.state;
+    const { displayDrawer, user } = this.state;
     return (
       <>
         <div className={`App-header ${css(styles.header)}`}>
@@ -73,7 +101,7 @@ class App extends React.Component {
           <Header />
         </div>
         <div className={`App-body ${css(styles.body)}`}>
-          {isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
+          {user.isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login logIn={this.state.logIn} />}
           <BodySection title='News from the School'>
             <p>Today, we mourn the loss of a C22 student who dared make a function with 41 lines. The ghost of Betty Holberton has now claimed the lives of 69 students in the last...</p>
           </BodySection>
