@@ -1,31 +1,31 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Login from './Login';
+import Header from './Header';
 import { StyleSheetTestUtils } from 'aphrodite';
 
 StyleSheetTestUtils.suppressStyleInjection();
 
-describe('Login Component', () => {
+describe('Header Component', () => {
   let wrapper;
 
   // Re-creates wrapper before each test to prevent side-effects or
   // interference between tests
   beforeEach(() => {
-    wrapper = mount(<Login />);
+    wrapper = mount(<Header />);
   });
 
-  // Test that Footer renders without crashing
+  // Test that Header renders without crashing
   it('renders without crashing', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  // Test that Footer renders 2 input & 2 label tags
-  it('renders the copyright string', () => {
+  // Test that Header renders img and h1 tags
+  it('renders img and h1 tags', () => {
     wrapper.update();
-    const inputItems = wrapper.find('input');
-    expect(inputItems.length).toBe(3);
+    const imgItems = wrapper.find('img');
+    expect(imgItems.exists()).toBe(true);
 
-    const labelItems = wrapper.find('label');
-    expect(labelItems.length).toBe(2);
+    const h1Items = wrapper.find('h1');
+    expect(h1Items.exists()).toBe(true);
   });
 });
