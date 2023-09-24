@@ -4,10 +4,23 @@ import { StyleSheet, css } from 'aphrodite';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [enableSubmit, setEnableSubmit] = useState(false);
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     setIsLoggedIn(true);
+  };
+
+  const handleChangeEmail = (email) => {
+    setEmail(email);
+    setEnableSubmit(email !== '' && password !== '');
+  };
+
+  const handleChangePassword = (password) => {
+    setPassword(password);
+    setEnableSubmit(email !== '' && password !== '');
   };
 
   return (
@@ -18,19 +31,38 @@ const Login = () => {
           <form className={css(styles.form)} onSubmit={handleLoginSubmit}>
             <div className={css(styles.labelInput)}>
               <label htmlFor='email' >Email</label>
-              <input type='email' name='email' id='email' autoComplete='email'></input>
+              <input
+                type='email'
+                name='email'
+                id='email'
+                autoComplete='true'
+                value={email}
+                onChange={(e) => { handleChangeEmail(e.target.value) }}
+              />
             </div>
             <div className={css(styles.labelInput)}>
               <label htmlFor='password'>Password</label>
-              <input type='password' name='password' id='password' autoComplete='true'></input>
+              <input
+                type='password'
+                name='password'
+                id='password'
+                autoComplete='true'
+                value={password}
+                onChange={(e) => { handleChangePassword(e.target.value) }}
+              />
             </div>
-            <input type='submit' className={css(styles.button)} value='OK' />
+            <input
+              type='submit'
+              className={css(styles.button)}
+              value='OK'
+              disabled={!enableSubmit}
+            />
           </form>
         </div>
       </BodySectionWithMarginBottom>
     </>
   );
-  };
+};
 
 const styles = StyleSheet.create({
   login: {
