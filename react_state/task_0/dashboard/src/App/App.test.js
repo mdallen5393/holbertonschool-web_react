@@ -109,4 +109,19 @@ describe('App Component displayDrawer state', () => {
     instance.handleHideDrawer();
     expect(wrapper.state().displayDrawer).toBe(false);
   });
+
+  it('passes updated displayDrawer state as prop to Notifications', () => {
+    const instance = wrapper.instance();
+
+    // Call handleDisplayDrawer and check if the updated state is passed as a prop
+    instance.handleDisplayDrawer();
+    wrapper.update();
+    expect(wrapper.find('Notifications').prop('displayDrawer')).toBe(true);
+  
+    // Call handleHideDrawer and check if the updated state is passed as a prop
+    instance.handleHideDrawer();
+    wrapper.update();
+    expect(wrapper.find('Notifications').prop('displayDrawer')).toBe(false);
+  });
+  
 });

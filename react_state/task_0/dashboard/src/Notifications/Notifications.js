@@ -12,7 +12,7 @@ class Notifications extends Component {
   };
 
   shouldComponentUpdate(nextProps) {
-    return nextProps.listNotifications.length > this.props.listNotifications.length;
+    return nextProps.listNotifications.length > this.props.listNotifications.length || nextProps.displayDrawer != this.props.displayDrawer;
   };
 
   componentDidUpdate() {
@@ -24,20 +24,24 @@ class Notifications extends Component {
   };
 
   render() {
-    const { displayDrawer, listNotifications } = this.props;
+    const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer } = this.props;
 
     return (
       <div id='container' className={css(styles.container)}>
-        <div className={`menuItem ${css(styles.menuItem)} ${css(styles.fadeBounce)}`}>
+        <div className={`menuItem ${css(styles.menuItem)} ${css(styles.fadeBounce)}`} onClick={this.props.handleDisplayDrawer}>
           Your notifications
         </div>
         {displayDrawer && (
           <div className={`Notifications ${css(styles.notifications)}}`}>
-            <img src={closeIcon} alt='close icon'
+            <img src={closeIcon}
+              alt='close icon'
               style={{ height: '15px', position: 'absolute', top: 10, right: 10 }}
               aria-label='Close'
-              onClick={() => console.log('Close button has been clicked')}
-            ></img>
+              onClick={() => {
+                console.log('Close button has been clicked');
+                this.props.handleHideDrawer();
+              }}
+            />
 
             {listNotifications.length > 0 && <p>Here is the list of notifications</p>}
             <ul className={css(styles.list)}>
@@ -60,11 +64,15 @@ class Notifications extends Component {
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  handleDisplayDrawer: PropTypes.func,
+  handleHideDrawer: PropTypes.func,
 };
 
 Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
+  handleDisplayDrawer: () => {},
+  handleHideDrawer: () => {},
 };
 
 const styles = StyleSheet.create({
