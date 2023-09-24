@@ -60,12 +60,13 @@ class App extends React.Component {
 
   render() {
     const { isLoggedIn, logOut } = this.props;
+    const { displayDrawer } = this.state;
     return (
       <>
         <div className={`App-header ${css(styles.header)}`}>
           <Notifications
             listNotifications={listNotifications}
-            displayDrawer={this.state.displayDrawer}
+            displayDrawer={displayDrawer}
             handleDisplayDrawer={this.handleDisplayDrawer}
             handleHideDrawer={this.handleHideDrawer}
           />
