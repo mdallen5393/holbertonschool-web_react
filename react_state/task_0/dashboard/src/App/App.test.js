@@ -123,5 +123,16 @@ describe('App Component displayDrawer state', () => {
     wrapper.update();
     expect(wrapper.find('Notifications').prop('displayDrawer')).toBe(false);
   });
-  
+
+  it('calls handleDisplayDrawer when menu item is clicked', () => {
+    const wrapper = mount(<App />);
+    wrapper.find('Notifications').prop('handleDisplayDrawer')();
+    expect(wrapper.instance().state.displayDrawer).toBe(true);
+  });
+
+  it('calls handleHideDrawer when close button is clicked', () => {
+    const wrapper = mount(<App />);
+    wrapper.find('Notifications').prop('handleHideDrawer')();
+    expect(wrapper.instance().state.displayDrawer).toBe(false);
+  });
 });
