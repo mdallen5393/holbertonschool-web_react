@@ -28,4 +28,24 @@ describe('Login Component', () => {
     const labelItems = wrapper.find('label');
     expect(labelItems.length).toBe(2);
   });
+
+  // Test that the OK button is disabled by default
+  it('disables the OK button by default', () => {
+    const submitButton = wrapper.find('input[type="submit"]');
+    expect(submitButton.props().disabled).toBe(true);
+  });
+
+  //Test that after changing username/password, the button is enabled
+  it('enables the OK button when both inputs are not empty', () => {
+    const emailInput = wrapper.find('input[name="email"]');
+    const passwordInput = wrapper.find('input[name="password"]');
+
+    // user changes email and password
+    emailInput.simulate('change', { target: {value: 'test@email.com' } });
+    passwordInput.simulate('change', { target: {value: 'password' } });
+    wrapper.update();
+
+    const submitButton = wrapper.find('input[type="submit"]');
+    expect(submitButton.props().disabled).toBe(false);
+  });
 });
