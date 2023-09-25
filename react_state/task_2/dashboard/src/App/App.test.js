@@ -12,6 +12,11 @@ describe('App Component before login', () => {
   // interference between tests
   beforeEach(() => {
     wrapper = mount(<App />);
+    wrapper.setState({
+      user: {
+        isLoggedIn: false,
+      },
+    });
   });
 
   // Test that App renders without crashing
@@ -43,38 +48,37 @@ describe('App Component before login', () => {
   // Test that CourseList is not displayed when isLoggedIn is false
   it('does not display CourseList when isLoggedIn is false', () => {
     wrapper.update();
-    const CourseListElement = wrapper.find('table');
+    const CourseListElement = wrapper.find('CourseList');
     expect(CourseListElement.exists()).toBe(false);
   });
 });
 
 describe('App Component after login', () => {
   let wrapper;
-  const mockLogOut = jest.fn();
-  const mockAlert = jest.fn();
 
   // Re-creates wrapper before each test to prevent side-effects or
   // interference between tests
   beforeEach(() => {
-    global.alert = mockAlert;
-    wrapper = mount(<App isLoggedIn={true} logOut={mockLogOut} />);
-  });
 
-  afterEach(() => {
-    global.alert = window.alert;
+    wrapper = mount(<App />);
+    wrapper.setState({
+      user: {
+        isLoggedIn: true,
+      },
+    });
   });
 
   // Test that Login is not displayed when logged in
   it('does not display Login when isLoggedIn is false', () => {
     wrapper.update();
-    const LoginElement = wrapper.find('form');
+    const LoginElement = wrapper.find('Login');
     expect(LoginElement.exists()).toBe(false);
   });
 
   // Test that CourseList is shown when logged in
   it('renders the CourseList component when isLoggedIn is true', () => {
     wrapper.update();
-    const CourseListElement = wrapper.find('table');
+    const CourseListElement = wrapper.find('CourseList');
     expect(CourseListElement.exists()).toBe(true);
   });
 
@@ -82,8 +86,7 @@ describe('App Component after login', () => {
   it('calls logOut and alert when ctrl+h is pressed', () => {
     const instance = wrapper.instance();
     instance.handleKeyDown({ key: 'h', ctrlKey: true });
-    expect(mockLogOut).toHaveBeenCalled();
-    expect(mockAlert).toHaveBeenCalledWith('Logging you out');
+    expect(wrapper.state().user.isLoggedIn).toBe(false);
   });
 });
 
@@ -116,11 +119,33 @@ describe('App Component displayDrawer state', () => {
     // Call handleDisplayDrawer and check if the updated state is passed as a prop
     instance.handleDisplayDrawer();
     wrapper.update();
-    expect(wrapper.find('Notifications').prop('displayDrawer')).toBe(true);
+    expect(wrapper.state().displayDrawer).toBe(true);
 
     // Call handleHideDrawer and check if the updated state is passed as a prop
     instance.handleHideDrawer();
     wrapper.update();
-    expect(wrapper.find('Notifications').prop('displayDrawer')).toBe(false);
+    expect(wrapper.state().displayDrawer).toBe(false);
   });
+
+  it('logIn function updates the state correctly', () => {
+    const instance = wrapper.instance();
+    const testEmail = 'test@test.com';
+    const testPassword = 'password';
+
+    instance.logIn(testEmail, testPassword);
+
+    expect(wrapper.state().user.email).toBe(testEmail);
+    expect(wrapper.state().user.password).toBe(testPassword);
+    expect(wrapper.state().user.isLoggedIn).toBe(true);
+  });
+
+  it('logOut function updates the state correctly', () => {
+    const instance = wrapper.instance();
+
+    instance.logOut();
+
+    expect(wrapper.state().user.email).toBe('');
+    expect(wrapper.state().user.password).toBe('');
+    expect(wrapper.state().user.isLoggedIn).toBe(false);
+  })
 });
