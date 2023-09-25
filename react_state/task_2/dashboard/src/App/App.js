@@ -56,7 +56,7 @@ class App extends React.Component {
     console.log('A key was pressed', event.key);
     if (event.ctrlKey && event.key === 'h') {
       alert('Logging you out');
-      this.state.logOut();
+      this.logOut();
     }
   };
 
