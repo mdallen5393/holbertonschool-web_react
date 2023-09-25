@@ -129,19 +129,13 @@ describe('Notifications Component listNotifications', () => {
     expect(listItems.length).toBe(listNotifications.length);
   });
 
-  // // FIXME: I tried everything to get this test to work and I couldn't, so I just changed it to use "toHaveBeenCalled()" instead
-  // it('checks that markAsRead is called with 1 if the first notification is clicked', () => {
-  //   const markAsRead = jest.fn();
-  //   const wrapper = mount(<Notifications displayDrawer={true} listNotifications={listNotifications} markAsRead={markAsRead} />);
-  //   wrapper.find(NotificationItem).first().simulate('click');
-  //   expect(markAsRead).toHaveBeenCalledWith(1);
-  // });
   it('checks that markAsRead is called with 1 if the first notification is clicked', () => {
     const markAsRead = jest.fn();
     const wrapper = mount(<Notifications displayDrawer={true} listNotifications={listNotifications} markAsRead={markAsRead} />);
     wrapper.find(NotificationItem).first().simulate('click');
-    expect(markAsRead).toHaveBeenCalled();
+    expect(markAsRead).toHaveBeenCalledWith(1);
   });
+
 
   it('does not re-render when updating the props with the same list', () => {
     const consoleSpy = jest.spyOn(console, 'log');

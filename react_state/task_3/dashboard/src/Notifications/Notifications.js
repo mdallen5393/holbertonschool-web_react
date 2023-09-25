@@ -8,6 +8,7 @@ import { StyleSheet, css } from 'aphrodite';
 class Notifications extends PureComponent {
   render() {
     const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer, markAsRead } = this.props;
+
     return (
       <div id='container' className={css(styles.container)}>
         <div className={`menuItem ${css(styles.menuItem)} ${css(styles.fadeBounce)}`} onClick={handleDisplayDrawer}>
@@ -28,8 +29,15 @@ class Notifications extends PureComponent {
                 <p>No new notification for now</p>
               ) : (
                 listNotifications.map(({ type, html, value, id }) => (
-                  <NotificationItem key={id} type={type} html={html} value={value} markAsRead={markAsRead}
-                    className={`notification-item ${css(type === 'default' ? styles.defaultNotification : styles.urgentNotification)}`} />
+                  <NotificationItem
+                    key={id}
+                    id={id}
+                    type={type}
+                    html={html}
+                    value={value}
+                    markAsRead={markAsRead}
+                    className={`notification-item ${css(type === 'default' ? styles.defaultNotification : styles.urgentNotification)}`}
+                  />
                 ))
               )}
             </ul>
