@@ -9,6 +9,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
 import BodySection from '../BodySection/BodySection';
+import AppContext from './AppContext';
 
 // create listNotifications array
 const listNotifications = [
@@ -88,26 +89,28 @@ class App extends React.Component {
   };
 
   render() {
-    const { displayDrawer, user } = this.state;
+    const { displayDrawer, user, logOut } = this.state;
     return (
-      <>
-        <div className={`App-header ${css(styles.header)}`}>
-          <Notifications
-            listNotifications={listNotifications}
-            displayDrawer={displayDrawer}
-            handleDisplayDrawer={this.handleDisplayDrawer}
-            handleHideDrawer={this.handleHideDrawer}
-          />
-          <Header />
-        </div>
-        <div className={`App-body ${css(styles.body)}`}>
-          {user.isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login logIn={this.state.logIn} />}
-          <BodySection title='News from the School'>
-            <p>Today, we mourn the loss of a C22 student who dared make a function with 41 lines. The ghost of Betty Holberton has now claimed the lives of 69 students in the last...</p>
-          </BodySection>
-        </div>
-        <Footer className={`App-footer ${css(styles.footer)}`} />
-      </>
+      <AppContext.Provider value={{ user, logOut }}>
+        <>
+          <div className={`App-header ${css(styles.header)}`}>
+            <Notifications
+              listNotifications={listNotifications}
+              displayDrawer={displayDrawer}
+              handleDisplayDrawer={this.handleDisplayDrawer}
+              handleHideDrawer={this.handleHideDrawer}
+            />
+            <Header />
+          </div>
+          <div className={`App-body ${css(styles.body)}`}>
+            {user.isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login logIn={this.state.logIn} />}
+            <BodySection title='News from the School'>
+              <p>Today, we mourn the loss of a C22 student who dared make a function with 41 lines. The ghost of Betty Holberton has now claimed the lives of 69 students in the last...</p>
+            </BodySection>
+          </div>
+          <Footer className={`App-footer ${css(styles.footer)}`} />
+        </>
+      </AppContext.Provider>
     );
   };
 };
