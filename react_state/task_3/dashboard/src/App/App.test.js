@@ -55,17 +55,23 @@ describe('App Component before login', () => {
 
 describe('App Component after login', () => {
   let wrapper;
+  const mockLogOut = jest.fn();
+  const mockAlert = jest.fn();
 
   // Re-creates wrapper before each test to prevent side-effects or
   // interference between tests
   beforeEach(() => {
-
+    global.alert = mockAlert;
     wrapper = mount(<App />);
     wrapper.setState({
       user: {
         isLoggedIn: true,
       },
     });
+  });
+
+  afterEach(() => {
+    global.alert = window.alert;
   });
 
   // Test that Login is not displayed when logged in
