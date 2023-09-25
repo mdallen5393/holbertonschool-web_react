@@ -11,13 +11,6 @@ import CourseList from '../CourseList/CourseList';
 import BodySection from '../BodySection/BodySection';
 import AppContext from './AppContext';
 
-// create listNotifications array
-const listNotifications = [
-  { id: 1, type: 'default', value: 'New course available', html: undefined },
-  { id: 2, type: 'urgent', value: 'New resume available', html: undefined },
-  { id: 3, type: 'urgent', value: undefined, html: { __html: '<strong>Urgent requirement</strong> - complete by EOD' }},
-];
-
 // create listCourses array
 const listCourses = [
   { id: 1, name: 'ES6', credit: 60 },
@@ -37,6 +30,11 @@ class App extends React.Component {
       },
       logIn: this.logIn,
       logOut: this.logOut,
+      listNotifications: [
+        { id: 1, type: 'default', value: 'New course available', html: undefined },
+        { id: 2, type: 'urgent', value: 'New resume available', html: undefined },
+        { id: 3, type: 'urgent', value: undefined, html: { __html: '<strong>Urgent requirement</strong> - complete by EOD' }},
+      ]
     };
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
@@ -88,8 +86,14 @@ class App extends React.Component {
     });
   };
 
+  markNotificationAsRead = (id) => {
+    this.setState({
+      listNotifications: this.state.listNotifications.filter((notification) => notification.id !== id),
+    });
+  };
+
   render() {
-    const { displayDrawer, user, logOut } = this.state;
+    const { displayDrawer, user, logIn, logOut, listNotifications } = this.state;
     return (
       <AppContext.Provider value={{ user, logOut }}>
         <>
@@ -99,11 +103,12 @@ class App extends React.Component {
               displayDrawer={displayDrawer}
               handleDisplayDrawer={this.handleDisplayDrawer}
               handleHideDrawer={this.handleHideDrawer}
+              markAsRead={this.markNotificationAsRead}
             />
             <Header />
           </div>
           <div className={`App-body ${css(styles.body)}`}>
-            {user.isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login logIn={this.state.logIn} />}
+            {user.isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login logIn={logIn} />}
             <BodySection title='News from the School'>
               <p>Today, we mourn the loss of a C22 student who dared make a function with 41 lines. The ghost of Betty Holberton has now claimed the lives of 69 students in the last...</p>
             </BodySection>

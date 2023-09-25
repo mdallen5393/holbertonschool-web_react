@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
 
 const NotificationItem = React.memo(({ type, html, value, markAsRead, id }) => {
   const className = type === 'default' ? styles.default : styles.urgent;
-
   if (html) {
     return (
       <li className={`${css(styles.listItem)} ${css(className)}`} data-notification-type={type} dangerouslySetInnerHTML={html} onClick={() => markAsRead(id)}/>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import App from './App';
 import { StyleSheetTestUtils } from 'aphrodite';
 
@@ -153,5 +153,21 @@ describe('App Component displayDrawer state', () => {
     expect(wrapper.state().user.email).toBe('');
     expect(wrapper.state().user.password).toBe('');
     expect(wrapper.state().user.isLoggedIn).toBe(false);
-  })
+  });
+
+  it('verifies that markNotificationAsRead works as expected', () => {
+    const wrapper = shallow(<App />);
+    wrapper.setState({
+      listNotifications: [
+        { id: 1, type: 'default', value: 'New course available', html: undefined },
+        { id: 2, type: 'urgent', value: 'New resume available', html: undefined },
+        { id: 3, type: 'urgent', value: undefined, html: { __html: '<strong>Urgent requirement</strong> - complete by EOD' }},
+      ],
+    });
+    wrapper.instance().markNotificationAsRead(2);
+    expect(wrapper.state().listNotifications).toEqual([
+      { id: 1, type: 'default', value: 'New course available', html: undefined },
+      { id: 3, type: 'urgent', value: undefined, html: { __html: '<strong>Urgent requirement</strong> - complete by EOD' }},
+    ]);
+  });
 });
