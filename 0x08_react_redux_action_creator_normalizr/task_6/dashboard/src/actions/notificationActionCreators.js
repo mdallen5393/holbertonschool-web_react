@@ -1,4 +1,5 @@
 import { MARK_AS_READ, SET_TYPE_FILTER, NotificationTypeFilters } from "./notificationActionTypes";
+import { useDispatch } from 'react-redux';
 
 export function markAsRead(index) {
   return {
@@ -13,3 +14,11 @@ export function setTypeFilter(filter) {
     filter: filter,
   };
 };
+
+export function useCourseActions() {
+  const dispatch = useDispatch();
+  return {
+    markAsRead: (index) => dispatch(markAsRead(index)),
+    setTypeFilter: (filter) => dispatch(setTypeFilter(filter)),
+  };
+}
