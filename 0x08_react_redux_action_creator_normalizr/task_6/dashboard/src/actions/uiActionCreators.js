@@ -1,4 +1,12 @@
-import { LOGIN, LOGOUT, DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER } from "./uiActionTypes";
+import {
+  LOGIN,
+  LOGOUT,
+  DISPLAY_NOTIFICATION_DRAWER,
+  HIDE_NOTIFICATION_DRAWER,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+} from "./uiActionTypes";
+
 import { useDispatch } from 'react-redux';
 
 export function login(email, password) {
@@ -23,6 +31,18 @@ export function displayNotificationDrawer() {
 export function hideNotificationDrawer() {
   return {
     type: HIDE_NOTIFICATION_DRAWER,
+  };
+}
+
+export function loginSuccess() {
+  return {
+    type: LOGIN_SUCCESS,
+  };
+}
+
+export function loginFailure() {
+  return {
+    type: LOGIN_FAILURE,
   };
 }
 
