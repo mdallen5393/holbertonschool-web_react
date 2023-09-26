@@ -35,6 +35,16 @@ export function hideNotificationDrawer() {
   };
 }
 
+export const boundActionCreators = bindActionCreators(
+  {
+    login,
+    logout,
+    displayNotificationDrawer,
+    hideNotificationDrawer,
+  }
+);
+
+
 export function loginSuccess() {
   return {
     type: LOGIN_SUCCESS,
