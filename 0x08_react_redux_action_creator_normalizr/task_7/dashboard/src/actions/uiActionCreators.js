@@ -9,6 +9,7 @@ import {
 
 import { useDispatch } from 'react-redux';
 import fetch from 'node-fetch';
+import { bindActionCreators } from 'redux';
 
 export function login(email, password) {
   return {
